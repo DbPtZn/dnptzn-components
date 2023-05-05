@@ -1,0 +1,29 @@
+{
+  "name": "@dbptzn/fractal-container",
+  "version": "1.0.9",
+  "description": "Recursive-layout-container-component",
+  "main": "fractal-container.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "layout",
+    "container"
+  ],
+  "author": "dbptzn",
+  "license": "ISC",
+  "types": "./fractal-container.d.ts",
+  "dependencies": {
+    "@tanbo/stream": "^1.1.9",
+    "circular-json": "^0.5.9",
+    "element-resize-detector": "^1.2.4",
+    "lodash": "^4.17.21",
+    "vue": "^3.2.47"
+  },
+  "devDependencies": {
+    "@types/circular-json": "^0.4.0",
+    "@types/lodash": "^4.14.194",
+    "sass": "^1.62.1",
+    "typescript": "^5.0.2"
+  }
+}

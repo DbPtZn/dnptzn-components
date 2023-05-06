@@ -1,18 +1,26 @@
 # Vue 3 + TypeScript + Vite
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+使用 vue 递归组件制作的布局容器组件，不知道怎么称呼比较好，先叫分形容器组件吧。
+### 这个分形组件想要解决的问题：
+1. 我开发产品过程中遇到需要拖拽分隔条调整容器宽高的问题，每次都要单独去实现这个功能十分麻烦，所以我想着把它做成外部容器的固有能力。
+2. 我见识过一些产品，它们的扩展能力很强，支持他人开发插件，布局变化十分自由，所以我在尝试探索如何做出这样的产品。布局容器是第一步。
 
-## Recommended IDE Setup
+## Demo
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+仓库是我制作的一个简易 Demo，直接 npm install 安装依赖， npm run dev 应该就可以跑起来。
 
-## Type Support For `.vue` Imports in TS
+## fractal-container 分形容器
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+这是我第一次用 vue3 写递归组件，递归组件的很多行为跟普通组件不一样，网络的相关教程也不全面，所以一路磕磕绊绊，好在最后还是撸出来了。
+### 这个分形容器主要困难有两点：
+1. 如何分隔条实现 resize 调整容器宽高？一开始我用 dom 的思维完全找不到门路，后来换成数据驱动就有办法解决了，实现基本思路也写在代码注释里了，但算法只是我磕磕绊绊摸索出来的，用是应该没问题，但还不成熟。
+2. 如何实现容器之间的拖拽移动、替换？这个其实也不算难，就是略微繁琐再加上我对 vue 组件的底层实现不熟悉。在移动节点时往往会产生一些垃圾节点，这些问题也得想办法去处理。
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+### 未解决的问题：
+1. 移动节点时离开原层级时，节点的 dom 就会重新渲染。这可能不是我们期望看到的，限于我当前的知识水平，暂时没啥办法解决。
 
-1. Disable the built-in TypeScript Extension
-   1. Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-   2. Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+### 声明：
+1. 该组件并不成熟，请不要直接使用到你的项目中，如果你想用，或许可以参考一下自己再实现一遍，这样你知道该组件存在哪些问题。
+2. 编写该组件的时候我在自己的项目中简单测试过，但现在为了开源这个组件我又重构了，重构之后还没有测试过，后续我会在自己的项目中实际使用并持续优化更新。
+
+ps: 你可以用 npm i @dbptzn/fractal-container 在你自己的项目中安装使用，能用是能用，但现在最好不要这么做，因为我对打包发布还不熟悉，后续会持续优化。
